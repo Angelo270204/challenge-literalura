@@ -40,7 +40,7 @@ public class ChallengeLiteraluraApplication implements CommandLineRunner {
                 opcion = scan.nextInt();
                 scan.nextLine();
             } catch (InputMismatchException e) {
-                System.out.println("Por favor ingrese un numero valido\n");
+                System.out.println("Por favor, ingrese un número válido\n");
                 scan.nextLine();
                 opcion = -1;
             }
@@ -64,7 +64,7 @@ public class ChallengeLiteraluraApplication implements CommandLineRunner {
                     System.out.println("Saliendo...");
                     break;
                 default:
-                    System.out.println("Opcion invalida, vuelva a intentarlo");
+                    System.out.println("Opción inválida, vuelva a intentarlo");
                     break;
             }
         }
@@ -75,7 +75,7 @@ public class ChallengeLiteraluraApplication implements CommandLineRunner {
         String titulo = scan.nextLine();
         var libroPorTitulo = libroService.buscarPorTitulo(titulo);
         if (!libroPorTitulo.isEmpty()) {
-            System.out.println("El libro ya esta registrado en la base de datos");
+            System.out.println("El libro ya está registrado en la base de datos");
             return;
         }
 
@@ -88,7 +88,7 @@ public class ChallengeLiteraluraApplication implements CommandLineRunner {
                 .findFirst();
 
         if (libroEncontrado.isPresent()) {
-            System.out.println("Libro agregado a la bd");
+            System.out.println("Libro agregado a la base de datos");
             System.out.println(libroEncontrado.get());
             libroService.agregarLibro(libroEncontrado.get());
         } else {
@@ -100,7 +100,7 @@ public class ChallengeLiteraluraApplication implements CommandLineRunner {
     public void listarLibrosBuscados() {
         List<Libro> librosBuscados = libroService.obtenerTodosLosLibros();
         if (librosBuscados.isEmpty()) {
-            System.out.println("No hay libros registrados aun");
+            System.out.println("No hay libros registrados aún");
             return;
         }
         librosBuscados.forEach(System.out::println);
@@ -109,7 +109,7 @@ public class ChallengeLiteraluraApplication implements CommandLineRunner {
     public void listarAutoresRegistrados() {
         List<String> autoresAgrupados = autorService.obtenerAutoresConLibrosAgrupados();
         if (autoresAgrupados.isEmpty()) {
-            System.out.println("No hay autores registrados aun");
+            System.out.println("No hay autores registrados aún");
             return;
         }
 
@@ -119,30 +119,30 @@ public class ChallengeLiteraluraApplication implements CommandLineRunner {
     public void listarAutoresVivosDeterminadoAnio() {
         List<Libro> librosBuscados = libroService.obtenerTodosLosLibros();
         if (librosBuscados.isEmpty()) {
-            System.out.println("Aun no hay autores registrados por mostrar");
+            System.out.println("Aún no hay autores registrados por mostrar");
             return;
         }
-        System.out.println("Ingrese el anio en el que desea buscar: ");
+        System.out.println("Ingrese el año en el que desea buscar: ");
         try {
             int anio = scan.nextInt();
             scan.nextLine();
             var librosAniosAnteriores = autorService.autoresVivosDeterminadoAnio(anio);
             if (librosAniosAnteriores.isEmpty()) {
-                System.out.println("El arreglo esta vacio");
+                System.out.println("El arreglo está vacío");
             } else {
                 librosAniosAnteriores.forEach(System.out::println);
             }
         } catch (InputMismatchException e) {
-            System.out.println("Por favor ingrese un numero valido");
+            System.out.println("Por favor, ingrese un número válido");
         }
     }
 
     public void cantidadDeLibrosPorIdioma() {
         System.out.println("Ingrese el idioma para buscar los libros");
-        System.out.println("es - Espaniol");
-        System.out.println("en - ingles");
+        System.out.println("es - Español");
+        System.out.println("en - Inglés");
         String idioma = scan.nextLine();
-        System.out.println("Resultados de la busqueda:");
+        System.out.println("Resultados de la búsqueda:");
         if (idioma.equals("es") || idioma.equals("en")) {
             List<Libro> librosEncontrados = libroService.buscarLibrosPorIdioma(idioma);
             if (!librosEncontrados.isEmpty()) {
@@ -151,7 +151,7 @@ public class ChallengeLiteraluraApplication implements CommandLineRunner {
                 System.out.println("No hay libros por mostrar");
             }
         } else {
-            System.out.println("Opcion invalida");
+            System.out.println("Opción inválida");
         }
     }
 }

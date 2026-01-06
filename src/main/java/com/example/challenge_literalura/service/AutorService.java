@@ -48,5 +48,4 @@ public class AutorService {
                 })
                 .toList();
     }
-
 }

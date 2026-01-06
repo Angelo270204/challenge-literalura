@@ -86,7 +86,7 @@ public class Autor {
         return "Autor: "+nombre +"\n"+
                 "Fecha de Nacimiento: "+anioNacimiento+"\n"+
                 "Fecha de fallecimiento: "+anioFallecimiento+"\n"+
-                "Libros: "+getLibro().getTitulo();
+                "Libros: "+getLibro().getTitulo()+"\n";
     }
 }
 
